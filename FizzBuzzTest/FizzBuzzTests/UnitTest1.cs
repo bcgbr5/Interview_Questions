@@ -34,13 +34,12 @@ namespace FizzBuzzTests
         }
 
         [TestMethod]
-        public void ReturnProccess1Through5()
+        public void ReturnProccess1Through15()
         {
             var sut = new FizzBuzz();
             List<int> testList = new List<int>(Enumerable.Range(1, 15));
             string[] temp = { "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz" };
             List<string> expected = new List<string>(temp);
-            //List<string> actual = new List<string>(temp);
             List<string> actual = sut.ProccessInput(testList);
             CollectionAssert.AreEqual(expected, actual);
         }

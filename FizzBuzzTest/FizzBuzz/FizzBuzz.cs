@@ -7,22 +7,21 @@ namespace FizzBuzzNS
     {
         public String ProccessNumber(int input)
         {
-            if (input % 3 == 0 && input % 5 == 0)
+            string result = "";
+            /*The obvious followup is how to do this without the double comparison*/
+            if (input % 3 == 0)
             {
-                return ("FizzBuzz");
+                result += "Fizz";
             }
-            else if (input % 3 == 0)
+            if (input % 5 == 0)
             {
-                return ("Fizz");
+                result += "Buzz";
             }
-            else if (input % 5 == 0)
-            {
-                return ("Buzz");
-            }
-            else
+            if (result == "")
             {
                 return input.ToString();
             }
+            return result;
         }
         public List<string> ProccessInput(List<int> inputs)
         {
