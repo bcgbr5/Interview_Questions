@@ -44,5 +44,16 @@ namespace FizzBuzzTests
             CollectionAssert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void ReturnProccess35Through53()
+        {
+            var sut = new ModifiedFizzBuzz();
+            List<int> testList = new List<int>(Enumerable.Range(35, 19));
+            string[] temp = { "FizzBuzz", "Fizz", "Fizz", "Fizz", "Fizz", "Buzz", "41", "Fizz", "Fizz", "44", "FizzBuzz", "46", "47", "Fizz", "49", "Buzz", "FizzBuzz", "Buzz", "FizzBuzz" };
+            List<string> expected = new List<string>(temp);
+            List<string> actual = sut.ProccessInput(testList);
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
     }
 }
