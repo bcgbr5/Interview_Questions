@@ -10,14 +10,23 @@ namespace BowlingScoring
         public int ScoreGame(List<int> Rolls)
         {
             int score = 0;
+            int numFrames = 10;
             foreach(int roll in Rolls)
             {
                 if (Frames.Count > 0)
                 {
-                    if (Frames[Frames.Count - 1].secondBall != null || Frames[Frames.Count - 1].isStrike)//If the last frame is full
+                    if (Frames[Frames.Count - 1].secondBall != null || (Frames[Frames.Count - 1].isStrike && Frames.Count < numFrames - 1))//If the last frame is full and not the last frame
                     {
                         Frames.Add(new Frame(Frames, Frames[Frames.Count - 1]));
                         Frames[Frames.Count - 1].Roll(roll);
+                    }
+                    else if(Frames.Count == numFrames)//if we're on the last frame
+                    {
+
+                    }
+                    else if (Frames.Count == numFrames -1 && (Frames[Frames.Count - 1].secondBall != null || Frames[Frames.Count - 1].isStrike))//If the next to last frame is full
+                    {
+
                     }
                     else
                     {
@@ -119,9 +128,48 @@ namespace BowlingScoring
 
     public class LastFrame : Frame
     {
+        public int? thirdBall;
+        public int? secondBallBonus;
         public override void Roll(int pins)
         {
-            /*TODO*/
+            if(firstBall == null)
+            {
+                base.Roll(pins);
+            }
+            else if(firstBall != null && secondBall == null)
+            {
+                secondBall = pins;
+                if (firstBall == 10)
+                {
+                    FirstBonusBall = pins;
+                }
+                else if (firstBall + secondBall ==10)
+                {
+                    isSpare = true;
+                }
+
+                if (lastFrame.isStrike)
+                {
+                    lastFrame.SecondBonusBall = pins;
+                }
+            }
+            else if(secondBall == 10 || secondBall == 10)
+            {
+                thirdBall = pins;
+                if(firstBall == 10)
+                {
+                    SecondBonusBall = pins;
+                }
+                else if(isSpare)
+                {
+                    FirstBonusBall = pins;
+                }
+
+                if(secondBall == 10)
+                {
+                    secondBallBonus = pins;
+                }
+            }
         }
     }
 
