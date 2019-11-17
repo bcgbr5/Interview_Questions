@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BowlingScoring
 {
-    public class BowlingScore
+    public class BowlingGame
     {
         public List<Frame> Frames = new List<Frame>();
         
@@ -62,6 +62,10 @@ namespace BowlingScoring
                 else if((lastFrame.isSpare||lastFrame.isStrike) && lastFrame.FirstBonusBall == null)
                 {
                     lastFrame.FirstBonusBall = pins;
+                    if (containingList.Count >= 3 && containingList[containingList.Count - 3].isStrike && containingList[containingList.Count - 3].SecondBonusBall == null)
+                    {
+                        containingList[containingList.Count - 3].SecondBonusBall = pins;
+                    }
                 }
             }
             else if(isStrike == false)
@@ -73,7 +77,7 @@ namespace BowlingScoring
                     lastFrame.SecondBonusBall = pins;
                 }
             }
-            else
+            else//This shouldn't ever get triggered, but essentially, if we somehow get here, this just adds a new Frame and rolls adds the score to it
             {
                 containingList.Add(new Frame(containingList, this));
                 containingList[containingList.Count - 1].Roll(pins);
