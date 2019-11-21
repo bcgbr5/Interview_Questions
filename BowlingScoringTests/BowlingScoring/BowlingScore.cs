@@ -15,18 +15,18 @@ namespace BowlingScoring
             {
                 if (Frames.Count > 0)
                 {
-                    if (Frames[Frames.Count - 1].secondBall != null || (Frames[Frames.Count - 1].isStrike && Frames.Count < numFrames - 1))//If the last frame is full and not the last frame
-                    {
-                        Frames.Add(new Frame(Frames, Frames[Frames.Count - 1]));
-                        Frames[Frames.Count - 1].Roll(roll);
-                    }
-                    else if(Frames.Count == numFrames)//if we're on the last frame
-                    {
-                        Frames[Frames.Count - 1].Roll(roll);
-                    }
-                    else if (Frames.Count == numFrames -1 && (Frames[Frames.Count - 1].secondBall != null || Frames[Frames.Count - 1].isStrike))//If the next to last frame is full
+                    if (Frames.Count == numFrames - 1 && (Frames[Frames.Count - 1].secondBall != null || Frames[Frames.Count - 1].isStrike))//If the next to last frame is full
                     {
                         Frames.Add(new FinalFrame(Frames[Frames.Count - 1], Frames));
+                        Frames[Frames.Count - 1].Roll(roll);
+                    }
+                    else if (Frames.Count == numFrames)//if we're on the last frame
+                    {
+                        Frames[Frames.Count - 1].Roll(roll);
+                    }
+                    else if (Frames[Frames.Count - 1].secondBall != null || (Frames[Frames.Count - 1].isStrike && Frames.Count < numFrames - 1))//If the last frame is full and not the last frame
+                    {
+                        Frames.Add(new Frame(Frames, Frames[Frames.Count - 1]));
                         Frames[Frames.Count - 1].Roll(roll);
                     }
                     else
@@ -94,7 +94,7 @@ namespace BowlingScoring
 
             }
         }
-        public int GetScore()
+        public virtual int GetScore()
         {
             return (firstBall ?? 0) + (secondBall ?? 0) + (SecondBonusBall ?? 0) + (FirstBonusBall ?? 0);
         }
@@ -129,49 +129,33 @@ namespace BowlingScoring
 
     public class FinalFrame : Frame
     {
-        public int? thirdBall;
-        public int? secondBallBonus;
+        public int thirdBall;
         public override void Roll(int pins)
         {
             if(firstBall == null)
             {
                 base.Roll(pins);
+                secondBall = null;
             }
             else if(firstBall != null && secondBall == null)
             {
                 secondBall = pins;
-                if (firstBall == 10)
-                {
-                    FirstBonusBall = pins;
-                }
-                else if (firstBall + secondBall ==10)
-                {
-                    isSpare = true;
-                }
-
+                
                 if (lastFrame.isStrike)
                 {
                     lastFrame.SecondBonusBall = pins;
                 }
             }
-            else if(secondBall == 10 || isSpare)
+            else if(firstBall != null && secondBall != null)
             {
                 thirdBall = pins;
-                if(firstBall == 10)
-                {
-                    SecondBonusBall = pins;
-                }
-                else if(isSpare)
-                {
-                    FirstBonusBall = pins;
-                }
-
-                if(secondBall == 10)
-                {
-                    secondBallBonus = pins;
-                }
             }
         }
+        public override int GetScore()
+        {
+            return base.GetScore() + thirdBall;
+        }
+
         public FinalFrame(Frame lastFrame, List<Frame> containingList)
         {
             this.lastFrame = lastFrame;
