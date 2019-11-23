@@ -6,7 +6,6 @@ def get_number_of_factors(number):
     for i in range(1, int(math.sqrt(number))):
         if number % i == 0:
             factors += 2
-    print(factors)
     return factors
 
 def get_triangular_number_with_n_factors(n):
@@ -15,7 +14,6 @@ def get_triangular_number_with_n_factors(n):
     while get_number_of_factors(triangular_num) < n:
         triangular_num += i
         i+=1
-        print(triangular_num)
     return triangular_num
 
 print(get_triangular_number_with_n_factors(500))
