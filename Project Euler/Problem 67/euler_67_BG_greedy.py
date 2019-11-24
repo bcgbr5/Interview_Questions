@@ -30,6 +30,6 @@ class node:
 triangle = loadTriangle('triangle.txt')
 print(node(0,0,triangle).total)
 
-#This is where this algorithm really shines.
-#it finishes in .237 Seconds vs the other ones
-#
+#This algorithm is a lot less efficient here. It
+#runs in the margin of error timewise on my machine 
+#and is almost 10% off the high (7273 vs 6580)
