@@ -15,7 +15,7 @@ def find_amicable_nums(numbers, this_num, amicables):
     print(this_num.number)
     for num in numbers:
         if num.divisor_sum == num.number and this_num.divisor_sum == num.number:
-            amicables.append(this_num.number , this_num.number)
+            amicables.append(this_num.number , num.number)
             print(amicables)
 
 class divisor_sum:
@@ -28,7 +28,7 @@ class divisor_sum:
 
 numbers = list()
 amicables = list()
-for i in range(1,100):
+for i in range(1,300):
     divisor_sum(i, numbers, amicables)
 print(sum(amicables))
     
