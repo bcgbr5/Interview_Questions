@@ -1,5 +1,6 @@
 #Project Euler Problem 25
 #Solution : Brandon Greer
+#Super slow. I'll come take a look at it if I think about it later
 import math 
 import numpy
 
@@ -19,7 +20,6 @@ def find_num_consective_primes(a,b,prime_list):
 
 prime_list = list(primesfrom3to(5000))
 prime_list.append(2)
-print(prime_list)
 prime_max = 0
 a_max = 0
 b_max = 0
@@ -32,6 +32,5 @@ for a in range(-1000,1001):
                 prime_max = a_b_primes
                 a_max = a
                 b_max = b
-                print(a_max , b_max , a_max*b_max)
 
 print(a_max , b_max , a_max*b_max)

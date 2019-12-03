@@ -1,5 +1,6 @@
 #Project Euler Problem 34
 #Solution : Brandon Greer
+#Slow : 38 sec
 import math
 
 p_solutions = list()
@@ -17,4 +18,3 @@ for p in range(0,len(p_solutions)):
     if len(p_solutions[p]) > len(p_solutions[p_max]):
         p_max = p
 print(p_max)
-print(len(p_solutions[p_max]))

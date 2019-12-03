@@ -23,7 +23,6 @@ def find_adbundant_sums(abundant_num_list):
         abundant_sum = sum(s)
         if abundant_sum<28124:#since this is a set instead of a list,  we don't have to worry about duplicates
             abundant_sums.add(abundant_sum)
-            print(abundant_sum)
     return abundant_sums
 
 upper_limit = 28112 #We know 12 is the smallest abundant number and that 

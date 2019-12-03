@@ -1,10 +1,24 @@
-Non-abundant sums
+1000-digit Fibonacci number
    
-Problem 23
-A perfect number is a number for which the sum of its proper divisors is exactly equal to the number. For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number.
+Problem 25
+The Fibonacci sequence is defined by the recurrence relation:
 
-A number n is called deficient if the sum of its proper divisors is less than n and it is called abundant if this sum exceeds n.
+Fn = Fn−1 + Fn−2, where F1 = 1 and F2 = 1.
+Hence the first 12 terms will be:
 
-As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest number that can be written as the sum of two abundant numbers is 24. By mathematical analysis, it can be shown that all integers greater than 28123 can be written as the sum of two abundant numbers. However, this upper limit cannot be reduced any further by analysis even though it is known that the greatest number that cannot be expressed as the sum of two abundant numbers is less than this limit.
+F1 = 1
+F2 = 1
+F3 = 2
+F4 = 3
+F5 = 5
+F6 = 8
+F7 = 13
+F8 = 21
+F9 = 34
+F10 = 55
+F11 = 89
+F12 = 144
+The 12th term, F12, is the first term to contain three digits.
 
-Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+

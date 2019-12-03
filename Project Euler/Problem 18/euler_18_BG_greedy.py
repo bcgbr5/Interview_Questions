@@ -1,9 +1,11 @@
 #I wanted to trty this as a greedy algorith to see 
 #how far off it was
+import os
+import sys
 
 def loadTriangle(filename):
     lines = list()
-    with open(filename) as fp:
+    with open(os.path.join(sys.path[0], filename)) as fp:
         for cnt, line in enumerate(fp):
                 line = (line.rstrip()).split()
                 lines.append([int(x) for x in line])

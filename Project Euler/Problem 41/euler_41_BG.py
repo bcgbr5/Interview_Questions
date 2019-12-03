@@ -5,8 +5,9 @@ from primes_generator import primesfrom3to
 
 primes_max = 1000000000
 primes_list = list(primesfrom3to(primes_max))
-primes_list.append(2)
-primes_list = set(primes_list)
+primes_list.reverse()
+# primes_list.append(2)
+# primes_list = set(primes_list)
 
 def is_pandigtal(num):
     num_str = str(num)
@@ -17,11 +18,16 @@ def is_pandigtal(num):
     return True
 
 
-pandigital_primes = list()
-for prime in primes_list:
-    if is_pandigtal(prime):
-        pandigital_primes.append(prime)
-print(max(pandigital_primes))
+pandigital_prime = 0
+index = 0
+while pandigital_prime == 0:
+    if is_pandigtal(primes_list[index]):
+        pandigital_prime = primes_list[index]
+# for prime in primes_list:
+#     if is_pandigtal(prime):
+#         pandigital_primes.append(prime)
+# print(max(pandigital_primes))
+print(pandigital_prime)
 
 
 

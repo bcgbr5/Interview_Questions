@@ -1,5 +1,6 @@
 #Project Euler Problem 34
 #Solution : Brandon Greer
+#Slow: about 2 minutes
 import math
 from primes_generator import primesfrom3to
 import itertools
@@ -31,7 +32,6 @@ for num in primes_list:
     is_circular(num, primes_list, circular_primes)
 
 circular_primes.sort()
-print(circular_primes)
 print(len(set(circular_primes)))
 
 

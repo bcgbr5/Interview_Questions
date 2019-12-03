@@ -1,8 +1,8 @@
-Digit factorials
+Integer right triangles
    
-Problem 34
-145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
+Problem 39
+If p is the perimeter of a right angle triangle with integral length sides, {a,b,c}, there are exactly three solutions for p = 120.
 
-Find the sum of all numbers which are equal to the sum of the factorial of their digits.
+{20,48,52}, {24,45,51}, {30,40,50}
 
-Note: as 1! = 1 and 2! = 2 are not sums they are not included.
+For which value of p ≤ 1000, is the number of solutions maximised?

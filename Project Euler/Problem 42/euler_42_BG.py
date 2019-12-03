@@ -1,10 +1,11 @@
 #Project Euler Problem 42
 #Solution : Brandon Greer
 import math
-
+import os
+import sys
 def load_words(filename):
     words = list()
-    with open(filename) as fp:
+    with open(os.path.join(sys.path[0], filename)) as fp:
         for cnt, line in enumerate(fp):
                 line = (line.rstrip()).split(',')
                 words.append([x for x in line])
@@ -19,7 +20,6 @@ for num in range(1,10000):
 
 trangle_words = list()
 words = load_words("words.txt")[0]
-print(words)
 
 for word in words:
     word_score = 0

@@ -1,4 +1,4 @@
-#Project Euler Problem 42
+#Project Euler Problem 43
 #Solution : Brandon Greer
 import itertools
 

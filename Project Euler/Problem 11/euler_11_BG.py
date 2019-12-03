@@ -5,9 +5,6 @@ text = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 49 49 99 40 
 split_text = text.split()
 
 rows = [[int(y) for y in split_text[x:x+20]] for x in range(0,len(split_text),20)]
-print(type(rows))
-print(type(rows[0]))
-print(type(rows[0][0]))
 
 # finds horizontal sum to the right
 # does not check to make sure it it safe to do so
@@ -35,15 +32,6 @@ def find_left_diag_prod(grid , x, y):
         prod = prod * grid[x+i][y-i]
     return prod
 
-print(find_horizontal_prod(rows,0,0))
-print(find_right_diag_prod(rows,0,0))
-print(find_vertical_prod(rows,0,0))
-print(find_left_diag_prod(rows,0,3))
-
-# largest_prod = 0
-# for i in range(0,17):
-#     for j in range(0,17):
-#         if find_horizontal_prod()
 largest_prod = 0
 for i in range(0,17):
     for j in range (0,17):

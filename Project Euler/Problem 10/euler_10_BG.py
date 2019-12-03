@@ -12,10 +12,6 @@ def primesfrom3to(n): #From https://stackoverflow.com/questions/2068372/fastest-
     return 2*numpy.nonzero(sieve)[0][1::]+1
 
 primes = primesfrom3to(2000000)
-print(primes[0])
-print(primes[1])
-print(primes[-1])
-print(primes[-2])
 print(sum(primes)+2)
 
 
