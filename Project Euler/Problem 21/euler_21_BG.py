@@ -1,37 +1,26 @@
 #Project Euler Problem 21
 #Solution : Brandon Greer
 import math
-def find_divisors(num):
-        divsors = list()
-        for candidate_divisor in range(1, int(math.sqrt(num))+1):
-            if num % candidate_divisor == 0:
-                divsors.append(candidate_divisor)
-        return divsors
+max_num = 10**4
 
-def find_divisors_sum(divisors):
-    return sum(divisors)
+def find_proper_divisors(num):
+    proper_divisors = list([1])
+    sqrt = math.sqrt(num)
+    if sqrt.is_integer():
+        proper_divisors.append(int(sqrt))
+    for candidate in range(2,int(math.floor(sqrt)+1)):
+        if num%candidate == 0:
+            proper_divisors.append(candidate)
+            proper_divisors.append(num/candidate)
+    return(proper_divisors)
 
-def find_amicable_nums(numbers, this_num, amicables):
-    print(this_num.number)
-    for num in numbers:
-        if num.divisor_sum == num.number and this_num.divisor_sum == num.number:
-            amicables.append(this_num.number , num.number)
-            print(amicables)
+def d(n):
+    return sum(find_proper_divisors(n))
 
-class divisor_sum:
+amicable_nums = set()
+for num in range(5,max_num):
+    if d(num) < max_num and d(d(num))==num and num != d(num):
+        amicable_nums.add(num)
+        amicable_nums.add(d(num))
 
-    def __init__(self, number, numbers, amicables):
-        self.number = number
-        self.divisor_sum = find_divisors_sum(find_divisors(number))
-        find_amicable_nums(numbers, self, amicables)
-
-
-numbers = list()
-amicables = list()
-for i in range(1,300):
-    divisor_sum(i, numbers, amicables)
-print(sum(amicables))
-    
-
-        
-
+print(sum(amicable_nums))
